@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Покупка билета{% endblock %}
+{% block content %}
+<h1>Покупка билета</h1>
+<div class="buy-ticket-content">
+    <form method="POST" action="{{ url_for('buy_ticket', direction_id=direction_id) }}">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="surname">Фамилия:</label>
+        <input type="text" id="surname" name="surname" required>
+
+        <label for="phone">Телефон:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="direction_id">Направление:</label>
+        <select id="direction_id" name="direction_id" required disabled>
+            <option value="{{ direction_id }}" >{{ direction.start }} - {{ direction.finish }}</option>
+        </select>
+
+        <label for="seat_id">Место:</label>
+        <select id="seat_id" name="seat_id" required>
+            {% for seat in seats %}
+            <option value="{{ seat.seat_id }}">{{ seat.class_field }} - {{ seat.seat_place }} - {{ seat.carriage }} - {{ seat.train_id }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="date">Дата:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="ticket_office_id">Касса:</label>
+        <select id="ticket_office_id" name="ticket_office_id" required>
+            {% for ticket_office in ticket_offices %}
+            <option value="{{ ticket_office.ticket_office_id }}">{{ ticket_office.place }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Купить билет</button>
+    </form>
+</div>
+{% endblock %}

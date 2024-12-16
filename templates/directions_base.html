@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}База направлений{% endblock %}
+
+{% block content %}
+<h1>База направлений</h1>
+<div class="buy-ticket-content">
+    <form class="search-form" method="GET" action="{{ url_for('directions_base') }}">
+        <input type="text" name="search" placeholder="Поиск" value="{{ search }}">
+        <button type="submit">Поиск</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Направление</th>
+                <th>Время в пути</th>
+                <th>Дистанция</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for direction in directions %}
+            <tr>
+                <td>{{ direction.start }} - {{ direction.finish }}</td>
+                <td>{{ direction.time }}</td>
+                <td>{{ direction.distance }}</td> 
+                <td>
+                    <a class="buy-button" href="{{ url_for('buy_ticket', direction_id=direction.direction_id) }}">Купить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о пользователе{% endblock %}
+
+{% block content %}
+<h1>Подробнее о пользователе</h1>
+<p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+<p><strong>Админ:</strong> {{ user.is_admin }}</p>
+<a class="table-button view" href="{{ url_for('get_users') }}">Вернуться к пользователям</a>
+{% endblock %}

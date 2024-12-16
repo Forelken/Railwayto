@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о поезде{% endblock %}
+
+{% block content %}
+<h1>Подробнее о поезде</h1>
+    <p><strong>Train ID:</strong> {{ train.train_id }}</p>
+    <p><strong>Type:</strong> {{ train.train_type }}</p>
+    <p><strong>Rate:</strong> {{ train.rate }}</p>
+    <p><strong>Direction:</strong> {{ train.direction }}</p>
+<a class="table-button view" href="{{ url_for('get_trains') }}">Вернуться к поездам</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Кассы{% endblock %}
+
+{% block content %}
+<h1>Кассы</h1>
+<div class="table-container" data-table="TicketOffice">
+<table data-table="TicketOffice">
+    <thead>
+        <tr>
+            <th style="display: none;" data-field="ticket_office_id">ID Кассы</th>
+            <th data-field="place">Место</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for office in ticket_offices %}
+        <tr data-table="TicketOffice" data-pk="{{ office.ticket_office_id }}">
+            <td data-field="ticket_office_id" style="display: none;">{{ office.ticket_office_id }}</td>
+            <td data-field="place">{{ office.place }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_ticket_office', pk=office.ticket_office_id) }}">Подробнее</a>
+                <button class="table-button delete" onclick="deleteItem('ticket_offices', '{{ office.ticket_office_id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<button id="createButton" class="table-button create">Создать</button>
+</div>
+{% endblock %}

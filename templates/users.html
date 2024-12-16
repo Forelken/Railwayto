@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block content %}
+<h1>Пользователи</h1>
+<div class="table-container" data-table="User">
+<table data-table="User">
+    <thead>
+        <tr>
+            <th data-field="username">Имя пользователя</th>
+            <th data-field="is_admin">Админ</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr data-table="User" data-pk="{{ user.id }}">
+            <td data-field="username">{{ user.username }}</td>
+            <td data-field="is_admin">{{ user.is_admin }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_user', pk=user.id) }}">Подробнее</a>
+                <button class="table-button toggle" onclick="toggleAdmin('{{ user.id }}')">Переключить админа</button>
+                <button class="table-button delete" onclick="deleteItem('users', '{{ user.id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

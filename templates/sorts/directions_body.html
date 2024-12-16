@@ -1,0 +1,13 @@
+{% for direction in directions %}
+<tr data-table="Direction" data-pk="{{ direction.direction_id }}">
+    <td data-field="direction_id" style="display: none;">{{ direction.direction_id }}</td>
+    <td data-field="start">{{ direction.start }}</td>
+    <td data-field="finish">{{ direction.finish }}</td>
+    <td data-field="time">{{ direction.time }}</td>
+    <td data-field="distance">{{ direction.distance }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_direction', pk=direction.direction_id) }}">View</a>
+        <button class="table-button delete" onclick="deleteItem('directions', '{{ direction.direction_id }}')">Delete</button>
+    </td>
+</tr>
+{% endfor %}

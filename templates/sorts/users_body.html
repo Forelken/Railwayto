@@ -1,0 +1,11 @@
+{% for user in users %}
+<tr data-table="User" data-pk="{{ user.id }}">
+    <td data-field="username">{{ user.username }}</td>
+    <td data-field="is_admin">{{ user.is_admin }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_user', pk=user.id) }}">Подробнее</a>
+        <button class="table-button toggle" onclick="toggleAdmin('{{ user.id }}')">Переключить админа</button>
+        <button class="table-button delete" onclick="deleteItem('users', '{{ user.id }}')">Удалить</button>
+    </td>
+</tr>
+{% endfor %}

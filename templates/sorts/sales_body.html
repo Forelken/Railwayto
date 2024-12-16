@@ -1,0 +1,13 @@
+{% for sale in sales %}
+<tr data-table="Sale" data-pk="{{ sale.sale_id }}">
+    <td data-field="sale_id" style="display: none;">{{ sale.sale_id }}</td>
+    <td data-field="sale_credits">{{ sale.sale_credits }}</td>
+    <td data-field="date">{{ sale.date }}</td>
+    <td data-field="ticket_office">{{ sale.ticket_office }}</td>
+    <td data-field="ticket">{{ sale.ticket }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_sale', pk=sale.sale_id) }}">View</a>
+        <button class="table-button delete" onclick="deleteItem('sales', '{{ sale.sale_id }}')">Delete</button>
+    </td>
+</tr>
+{% endfor %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Покупатели{% endblock %}
+
+{% block content %}
+<h1>Покупатели</h1>
+<div class="table-container" data-table="Customer">
+<table data-table="Customer">
+    <thead>
+        <tr>
+            <th style="display: none;" data-field="customer_id">ID покупателя</th>
+            <th data-field="name">Имя</th>
+            <th data-field="surname">Фамилия</th>
+            <th data-field="phone">Телефон</th>
+            <th data-field="email">Email</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr data-table="Customer" data-pk="{{ customer.customer_id }}">
+            <td data-field="customer_id" style="display: none;">{{ customer.customer_id }}</td>
+            <td data-field="name">{{ customer.name }}</td>
+            <td data-field="surname">{{ customer.surname }}</td>
+            <td data-field="phone">{{ customer.phone }}</td>
+            <td data-field="email">{{ customer.email }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_customer', pk=customer.customer_id) }}">Подробнее</a>
+                <button class="table-button delete" onclick="deleteItem('customers', '{{ customer.customer_id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+</table>
+<button id="createButton" class="table-button create">Создать</button>
+</div>
+{% endblock %}

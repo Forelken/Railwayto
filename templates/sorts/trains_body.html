@@ -1,0 +1,12 @@
+{% for train in trains %}
+<tr data-table="Train" data-pk="{{ train.train_id }}">
+    <td data-field="train_id" style="display: none;">{{ train.train_id }}</td>
+    <td data-field="train_type">{{ train.train_type }}</td>
+    <td data-field="rate">{{ train.rate }}</td>
+    <td data-field="direction">{{ train.direction }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_train', pk=train.train_id) }}">View</a>
+        <button class="table-button delete" onclick="deleteItem('trains', '{{ train.train_id }}')">Delete</button>
+    </td>
+</tr>
+{% endfor %}

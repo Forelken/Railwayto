@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Посадочные места{% endblock %}
+
+{% block content %}
+<h1>Посадочные места</h1>
+<div class="table-container" data-table="Seat">
+<table data-table="Seat">
+    <thead>
+        <tr>
+            <th style="display: none;" data-field="seat_id">ID посадочного места</th>
+            <th data-field="class_field">Класс</th>
+            <th data-field="seat_place">Номер посадочного места</th>
+            <th data-field="carriage">Вагон</th>
+            <th data-field="train">Поезд</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for seat in seats %}
+        <tr data-table="Seat" data-pk="{{ seat.seat_id }}">
+            <td data-field="seat_id" style="display: none;">{{ seat.seat_id }}</td>
+            <td data-field="class_field">{{ seat.class_field }}</td>
+            <td data-field="seat_place">{{ seat.seat_place }}</td>
+            <td data-field="carriage">{{ seat.carriage }}</td>
+            <td data-field="train">{{ seat.train }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_seat', pk=seat.seat_id) }}">Подробнее</a>
+                <button class="table-button delete" onclick="deleteItem('seats', '{{ seat.seat_id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<button id="createButton" class="table-button create">Создать</button>
+</div>
+{% endblock %}

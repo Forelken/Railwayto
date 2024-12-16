@@ -1,0 +1,13 @@
+{% for seat in seats %}
+<tr data-table="Seat" data-pk="{{ seat.seat_id }}">
+    <td data-field="seat_id" style="display: none;">{{ seat.seat_id }}</td>
+            <td data-field="class_field">{{ seat.class_field }}</td>
+            <td data-field="seat_place">{{ seat.seat_place }}</td>
+            <td data-field="carriage">{{ seat.carriage }}</td>
+            <td data-field="train">{{ seat.train }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_seat', pk=seat.seat_id) }}">Подробнее</a>
+                <button class="table-button delete" onclick="deleteItem('seats', '{{ seat.seat_id }}')">Удалить</button>
+            </td>
+</tr>
+{% endfor %}

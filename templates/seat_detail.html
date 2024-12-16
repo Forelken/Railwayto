@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о посадочном месте{% endblock %}
+
+{% block content %}
+<h1>Подробнее о посадочном месте</h1>
+<p><strong>ID посадочного места:</strong> {{ seat.seat_id }}</p>
+<p><strong>Класс:</strong> {{ seat.class_field }}</p>
+<p><strong>Номер посадочного места:</strong> {{ seat.seat_place }}</p>
+<p><strong>Вагон:</strong> {{ seat.carriage }}</p>
+<p><strong>Поезд:</strong> {{ seat.train }}</p>
+<a class="table-button view" href="{{ url_for('get_seats') }}">Вернуться к посадочным местам</a>
+{% endblock %}

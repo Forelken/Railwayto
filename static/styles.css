@@ -1,0 +1,453 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Убедимся, что padding включен в ширину */
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-container label {
+    margin: 0;
+    flex: 1;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.flash-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Стили для навигационной панели */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-item {
+    float: left;
+}
+
+.navbar-item a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-item a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Стили для админ-панели */
+.admin-header {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.admin-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-header ul li {
+    margin: 0 10px;
+}
+
+.admin-header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.admin-header ul li a:hover {
+    text-decoration: underline;
+}
+
+.admin-content {
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 400px; /* Ограничиваем высоту */
+    overflow-y: auto; /* Добавляем прокрутку */
+}
+
+.log-container {
+    margin-top: 20px;
+}
+
+.log-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.log-container ul li {
+    background: #f9f9f9;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Стили для таблиц */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+th.sort-asc::after {
+    content: ' ↑';
+    font-size: 0.8em;
+    color: green;
+}
+
+th.sort-desc::after {
+    content: ' ↓';
+    font-size: 0.8em;
+    color: red;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Стили для редактируемых ячеек */
+td[contenteditable="true"] {
+    background-color: #fff9c4;
+    padding: 5px;
+    border: 1px dashed #ccc;
+    border-radius: 3px;
+}
+
+/* Стили для кнопок в таблице */
+.table-button {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    width: auto; /* Убираем фиксированную ширину */
+    text-align: center; /* Центрируем текст */
+}
+
+.table-button.view {
+    background-color: #007bff;
+}
+
+.table-button.view:hover {
+    background-color: #0056b3;
+}
+
+.table-button.toggle {
+    background-color: #28a745;
+}
+
+.table-button.toggle:hover {
+    background-color: #218838;
+}
+
+.table-button.delete {
+    background-color: #dc3545;
+}
+
+.table-button.delete:hover {
+    background-color: #c82333;
+}
+
+/* Стили для main-header */
+.main-header {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.main-header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.main-header ul li {
+    margin: 0 10px;
+}
+
+.main-header ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-header ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    text-align: center;
+    margin-top: 50px;
+}
+.main-content img {
+    max-width: 80%; /* Ограничиваем максимальную ширину изображения */
+    max-height: 400px; /* Ограничиваем максимальную высоту изображения */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Центрируем изображение по горизонтали */
+}
+
+.about-content {
+    text-align: center;
+    margin: 20px;
+}
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+.back-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.back-button a:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для кнопки buy-button */
+.buy-button {
+    display: inline-block;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+.buy-ticket-content {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.buy-ticket-content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.buy-ticket-content form {
+    display: flex;
+    flex-direction: column;
+}
+.buy-ticket-content label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.buy-ticket-content input, .buy-ticket-content select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.buy-ticket-content button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.buy-ticket-content button:hover {
+    background-color: #0056b3;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+.search-form input {
+    padding: 5px;
+    margin-right: 10px;
+    
+}
+.search-form button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+.export-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.export-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.table-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.export-button {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.xlsx-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.xlsx-button:hover {
+    background-color: #218838;
+}
+
+.json-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.json-button:hover {
+    background-color: #0056b3;
+}

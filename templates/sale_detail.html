@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о продаже{% endblock %}
+
+{% block content %}
+<h1>Подробнее о продаже</h1>
+<p><strong>ID продажи:</strong> {{ sale.sale_id }}</p>
+<p><strong>Цена:</strong> {{ sale.sale_credits }}</p>
+<p><strong>Дата продажи:</strong> {{ sale.date }}</p>
+<p><strong>Касса:</strong> {{ sale.ticket_office }}</p>
+<p><strong>Билет:</strong> {{ sale.ticket }}</p>
+<a class="table-button view" href="{{ url_for('get_sales') }}">Вернуться к продажам</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создать пользователя</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Создавать пользователя</h1>
+        <form method="POST">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" name="username" required>
+            <label for="password">Пароль:</label>
+            <input type="password" name="password" required>
+            <div class="checkbox-container">
+                <label for="is_admin">Админ:</label>
+                <input type="checkbox" name="is_admin">
+            </div>
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+</body>
+</html>

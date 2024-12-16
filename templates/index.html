@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Главный экран{% endblock %}
+
+{% block content %}
+<h1>Добро пожаловать в систему ЖД</h1>
+<div class="main-header">
+    <ul>
+        <li><a href="{{ url_for('directions_base') }}">Купить билет</a></li>
+        <li><a href="{{ url_for('about') }}">О нас</a></li>
+        {% if current_user.is_authenticated %}
+            {% if current_user.is_admin %}
+                <li><a href="{{ url_for('admin') }}">Админ-панель</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}">Выход</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Вход</a></li>
+        {% endif %}
+    </ul>
+</div>
+<div class="main-content">
+    <img src="{{ url_for('static', filename='images/train.png') }}" alt="Train">
+</div>
+{% endblock %}

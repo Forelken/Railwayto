@@ -1,0 +1,13 @@
+{% for customer in customers %}
+<tr data-table="Customer" data-pk="{{ customer.customer_id }}">
+    <td data-field="customer_id" style="display: none;">{{ customer.customer_id }}</td>
+    <td data-field="name">{{ customer.name }}</td>
+    <td data-field="surname">{{ customer.surname }}</td>
+    <td data-field="phone">{{ customer.phone }}</td>
+    <td data-field="email">{{ customer.email }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_customer', pk=customer.customer_id) }}">Подробнее</a>
+        <button class="table-button delete" onclick="deleteItem('{{ customer.customer_id }}')">Удалить</button>
+    </td>
+</tr>
+{% endfor %}

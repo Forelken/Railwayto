@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о билете{% endblock %}
+
+{% block content %}
+<h1>Подробнее о билете</h1>
+    <p><strong>ID билета:</strong> {{ ticket.ticket_id }}</p>
+    <p><strong>Дата:</strong> {{ ticket.date }}</p>
+    <p><strong>Направление:</strong> {{ ticket.direction }}</p>
+    <p><strong>Поезд:</strong> {{ ticket.train }}</p>
+    <p><strong>Посадочное место:</strong> {{ ticket.seat}}</p>
+    <p><strong>Покупатель:</strong> {{ ticket.customer }}</p>
+<a class="table-button view" href="{{ url_for('get_tickets') }}">Вернуться к билетам</a>
+{% endblock %}

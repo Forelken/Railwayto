@@ -1,0 +1,14 @@
+{% for ticket in tickets %}
+<tr data-table="Ticket" data-pk="{{ ticket.ticket_id }}">
+    <td data-field="ticket_id" style="display: none;">{{ ticket.ticket_id }}</td>
+    <td data-field="date">{{ ticket.date }}</td>
+    <td data-field="direction">{{ ticket.direction }}</td>
+    <td data-field="train">{{ ticket.train }}</td>
+    <td data-field="seat">{{ ticket.seat }}</td>
+    <td data-field="customer">{{ ticket.customer }}</td>
+    <td>
+        <a class="table-button view" href="{{ url_for('get_ticket', pk=ticket.ticket_id) }}">View</a>
+        <button class="table-button delete" onclick="deleteItem('tickets', '{{ ticket.ticket_id }}')">Delete</button>
+    </td>
+</tr>
+{% endfor %}

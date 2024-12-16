@@ -1,0 +1,16 @@
+<nav class="navbar">
+    <ul class="navbar-list">
+        <li class="navbar-item"><a href="{{ url_for('index') }}">Главный экран</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_customers') }}">Покупатели</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_ticket_offices') }}">Кассы</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_directions') }}">Направления</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_trains') }}">Поезда</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_seats') }}">Посадочные места</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_tickets') }}">Билеты</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_sales') }}">Продажи</a></li>
+        <li class="navbar-item"><a href="{{ url_for('get_users') }}">Пользователи</a></li>
+        <li class="navbar-item"><a href="{{ url_for('create_user') }}">Создать пользователя</a></li>
+        <li class="navbar-item"><a href="{{ url_for('admin') }}">Админ-панель</a></li>
+        <li class="navbar-item"><a href="{{ url_for('logout') }}">Выход</a></li>
+    </ul>
+</nav>

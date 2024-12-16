@@ -1,0 +1,11 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Подробнее о кассе{% endblock %}
+
+{% block content %}
+<h1>Подробнее о кассе</h1>
+    <p><strong>ID кассы:</strong> {{ ticket_office.ticket_office_id }}</p>
+    <p><strong>Место:</strong> {{ ticket_office.place }}</p>
+<a class="table-button view" href="{{ url_for('get_ticket_offices') }}">Вернуться к кассам</a>
+{% endblock %}

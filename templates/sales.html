@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Продажи{% endblock %}
+
+{% block content %}
+<h1>Продажи</h1>
+<div class="table-container" data-table="Sale">
+<table data-table="Sale">
+    <thead>
+        <tr>
+            <th style="display: none;" data-field="sale_id">ID продажи</th>
+            <th data-field="sale_credits">Цена</th>
+            <th data-field="date">Дата продажи</th>
+            <th data-field="ticket_office">Касса</th>
+            <th data-field="ticket">Билет</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales %}
+        <tr data-table="Sale" data-pk="{{ sale.sale_id }}">
+            <td data-field="sale_id" style="display: none;">{{ sale.sale_id }}</td>
+            <td data-field="sale_credits">{{ sale.sale_credits }}</td>
+            <td data-field="date">{{ sale.date }}</td>
+            <td data-field="ticket_office">{{ sale.ticket_office }}</td>
+            <td data-field="ticket">{{ sale.ticket }}</td>
+            <td>
+                <a class="table-button view" href="{{ url_for('get_sale', pk=sale.sale_id) }}">Подробнее</a>
+                <button class="table-button delete" onclick="deleteItem('sales', '{{ sale.sale_id }}')">Удалить</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<button id="createButton" class="table-button create">Создать</button>
+</div>
+{% endblock %}

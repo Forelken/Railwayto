@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Админ-панель{% endblock %}
+
+{% block content %}
+<h1>Админ-панель</h1>
+<h2>Экспорт данных</h2>
+<div class="export-container">
+    <form method="POST" action="{{ url_for('admin') }}">
+        <label for="table">Выберите таблицу:</label>
+        <select id="table" name="table" class="table-select">
+            {% for table in tables %}
+            <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" name="export_xlsx" class="export-button xlsx-button">Экспорт в XLSX</button>
+        <button type="submit" name="export_json" class="export-button json-button">Экспорт в JSON</button>
+    </form>
+</div>
+<div class="admin-content">
+    <h2>Логи</h2>
+    <div class="log-container">
+        <ul>
+            {% for log in logs %}
+            <li>{{ log }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
