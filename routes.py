@@ -3,10 +3,29 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from tables import *
 from config import app
 from export import *
-
+from flask_bcrypt import Bcrypt
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
+def authenticate_with_injection(username, password):
+    try:
+        query = f'SELECT * FROM "user" WHERE username = \'{username}\' AND password = \'{password}\''
+        user_data = db.execute_sql(query).fetchone()
+        if user_data:
+            user = User(id=user_data[0], username=user_data[1], password=user_data[2], is_admin=user_data[3])
+            logging.info(f'User {username} logged in using SQL injection.')
+            return user
+    except Exception as e:
+        logging.error(f'SQL injection attempt failed: {str(e)}')
+    return None
+
+def authenticate_normally(username, password):
+    user = User.get_or_none(User.username == username)
+    if user and user.check_password(password):
+        logging.info(f'User {username} logged in normally.')
+        return user
+    return None
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -37,16 +56,27 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = User.get_or_none(User.username == username)
-        if user and user.check_password(password):
-            logging.info(f'User {username} logged in.')
+
+        # Попытка аутентификации с использованием SQL-инъекции
+        user = authenticate_with_injection(username, password)
+        if user:
             login_user(user)
             if user.is_admin:
                 return redirect(url_for('admin'))
             else:
                 return redirect(url_for('index'))
-        else:
-            flash('Invalid username or password')
+
+        # Попытка аутентификации обычным способом
+        user = authenticate_normally(username, password)
+        if user:
+            login_user(user)
+            if user.is_admin:
+                return redirect(url_for('admin'))
+            else:
+                return redirect(url_for('index'))
+        
+        flash('Неверный логин или пароль')
+
     return render_template('login.html')
 
 @app.route('/logout')
